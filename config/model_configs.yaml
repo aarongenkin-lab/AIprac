@@ -1,0 +1,50 @@
+# Model Configuration File
+# Configure API endpoints and models to test
+
+models:
+  openrouter_gpt4:
+    provider: "openrouter"
+    model_name: "openai/gpt-4o"
+    api_key_env: "OPENROUTER_API_KEY"
+    base_url: "https://openrouter.ai/api/v1"
+    max_tokens: 4096
+    temperature: 0.1
+
+  openrouter_claude:
+    provider: "openrouter"
+    model_name: "anthropic/claude-3.5-sonnet"
+    api_key_env: "OPENROUTER_API_KEY"
+    base_url: "https://openrouter.ai/api/v1"
+    max_tokens: 4096
+    temperature: 0.1
+
+  openrouter_gemini:
+    provider: "openrouter"
+    model_name: "google/gemini-2.0-flash-exp:free"
+    api_key_env: "OPENROUTER_API_KEY"
+    base_url: "https://openrouter.ai/api/v1"
+    max_tokens: 4096
+    temperature: 0.1
+
+  local_llama:
+    provider: "ollama"
+    model_name: "llama3.2"
+    base_url: "http://localhost:11434"
+    max_tokens: 4096
+    temperature: 0.1
+
+# Alternative: Direct API configurations if you have individual keys
+  openai_direct:
+    provider: "openai"
+    model_name: "gpt-4o"
+    api_key_env: "OPENAI_API_KEY"
+    base_url: "https://api.openai.com/v1"
+    max_tokens: 4096
+    temperature: 0.1
+
+  anthropic_direct:
+    provider: "anthropic"
+    model_name: "claude-3-5-sonnet-20241022"
+    api_key_env: "ANTHROPIC_API_KEY"
+    max_tokens: 4096
+    temperature: 0.1

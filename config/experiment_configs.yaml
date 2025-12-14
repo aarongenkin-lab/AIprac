@@ -1,0 +1,61 @@
+# Experiment Configuration
+# Define experimental conditions and parameters
+
+experiment_name: "long_horizon_reasoning_v1"
+
+# Which models to test (keys from model_configs.yaml)
+test_models:
+  - "openrouter_gpt4"
+  - "openrouter_claude"
+  - "openrouter_gemini"
+  # - "local_llama"  # Uncomment if Ollama is running
+
+# System prompts to test (filenames in prompts/ directory)
+system_prompts:
+  - "minimal.txt"
+  - "standard_cot.txt"
+  - "detailed_cot.txt"
+  - "metacognitive.txt"
+  - "adversarial_resistant.txt"
+
+# Tool configurations
+tool_conditions:
+  none:
+    enabled_tools: []
+
+  python_only:
+    enabled_tools: ["python_executor"]
+
+  search_only:
+    enabled_tools: ["web_search"]
+
+  combined:
+    enabled_tools: ["python_executor", "web_search"]
+
+# Context length variations (in tokens, approximate)
+context_lengths:
+  - 4000
+  - 8000
+  - 16000
+  # - 32000  # Add for later experiments
+  # - 64000
+
+# Task types to include
+task_types:
+  - "math"
+  - "logic"
+  - "qa"
+  - "code"
+  - "retrieval"
+
+# Evaluation settings
+evaluation:
+  num_runs_per_config: 1  # For pilot, use 1; increase to 3 for final experiments
+  timeout_seconds: 120
+  save_raw_outputs: true
+  save_reasoning_traces: true
+
+# Sampling strategy for reducing total experiments
+sampling:
+  strategy: "stratified"  # Options: "full", "stratified", "random"
+  sample_fraction: 0.25  # Use 25% of all possible combinations for pilot

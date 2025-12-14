@@ -1,0 +1,268 @@
+I. Introduction
+a. Background
+
+Game theory broadly refers to the theory describing and analyzing situations in which the decision of one entity and the decision of an opposing or competing entity result in a number of predetermined outcomes. The prisoner’s dilemma is a subset of game theory and is simplified to give each of two parties two decisions—resulting in 
+2
+×
+2
+=
+4
+2×2=4 possible outcomes. The original prisoner’s dilemma was described and developed by employees of the RAND Corporation, a global policy think tank, and is described as follows:
+
+Two suspects are arrested. They are separated by the police, and each is given the opportunity to testify against the other. If one suspect testifies against the other (hereafter termed “defects”) while the other remains silent (hereafter termed “joins”), the defector goes free and the joiner is sentenced to 10 years in prison. If both suspects join (remain silent), each will serve a six month sentence. If both suspects testify (both defect), each will serve five years in prison. What should each prisoner do?
+
+b. Equilibrium
+
+This situation will be analyzed mathematically later, but the constants involved in the analysis need to be introduced here. Therefore, let:
+
+A = Defection reward — the sentence given to the prisoner who defects while the other joins.
+
+B = Joining reward — the sentence given to each prisoner if both join.
+
+C = Defection penalty — the sentence given to each prisoner if both defect.
+
+D = Joining penalty — the sentence given to the prisoner who joins while the other defects.
+
+Looking at the situation logically, one may be tempted to join. If both prisoners remain silent, each will only serve six months—a much shorter sentence than one of five or ten years. However, if the prisoner is interested only in serving the minimum sentence, defection is always the preferable option.
+
+To clarify this, punishments are converted to point rewards:
+A = 7, B = 5, C = 2, D = 1.
+
+As long as 
+𝐴
+>
+𝐵
+>
+𝐶
+>
+𝐷
+A>B>C>D, defection is always the better option regardless of the opponent’s decision. This yields a Nash Equilibrium, named after John Forbes Nash, Jr. In the prisoner’s dilemma where 
+𝐴
+>
+𝐵
+>
+𝐶
+>
+𝐷
+A>B>C>D, both players defecting is a Nash Equilibrium.
+
+c. Non-equilibrium
+
+Suppose instead that the joining penalty is not as severe as the defection penalty. In terms of points, 
+𝐴
+>
+𝐵
+>
+𝐷
+>
+𝐶
+A>B>D>C. For example:
+A = 7, B = 5, C = 1, D = 2.
+
+The Nash Equilibrium is disrupted. The correct move now depends on the opponent’s behavior.
+
+d. Applications and Survey
+
+The prisoner’s dilemma applies to politics, social policy, law enforcement, sports, and economics. Two examples examined later include climate change treaties and performance-enhancing drugs in sports.
+
+e. Investigation
+
+An in-person experiment using Silly Bandz as rewards was conducted. Players chose whether to join or defect and later explained their reasoning.
+
+II. Mathematics
+
+Define:
+
+𝑥
+x = probability Bob defects
+
+𝑦
+y = probability Steve defects
+
+𝑧
+z = Steve’s expected value
+
+Constants:
+
+A = defection reward
+
+B = joining reward
+
+C = defection punishment
+
+D = joining punishment
+
+Expected value equation:
+
+𝑧
+=
+(
+𝑥
+𝑦
+)
+𝐶
++
+(
+𝑥
+(
+1
+−
+𝑦
+)
+)
+𝐷
++
+(
+(
+1
+−
+𝑥
+)
+𝑦
+)
+𝐴
++
+(
+(
+1
+−
+𝑥
+)
+(
+1
+−
+𝑦
+)
+)
+𝐵
+z=(xy)C+(x(1−y))D+((1−x)y)A+((1−x)(1−y))B
+
+This expression is expanded and analyzed under different fixed strategies (Steve always defects or always joins), yielding expected values corresponding to A, B, C, and D.
+
+To consider joining, Steve must satisfy:
+
+Expected value of joining
+>
+Expected value of defecting
+Expected value of joining>Expected value of defecting
+
+This reduces to a probability threshold on 
+𝑥
+x, Bob’s likelihood of defecting. A key result is that non-equilibrium behavior requires 
+𝐷
+>
+𝐶
+D>C.
+
+Graphical analysis (3D and contour plots) shows that in non-equilibrium games, the optimal strategy is often to do the opposite of one’s opponent.
+
+Two derived constants:
+
+𝐻
+=
+𝐴
+−
+𝐵
+H=A−B (“defection enticement”)
+
+𝐾
+=
+𝐷
+−
+𝐶
+K=D−C (“joining enticement”)
+
+Steve should join if:
+
+𝑥
+>
+𝐻
+𝐻
++
+𝐾
+x>
+H+K
+H
+	​
+
+III. Survey Results
+a. Classic Prisoner’s Dilemma
+
+226 participants were surveyed.
+Results:
+
+54% chose to testify (defect)
+
+46% remained silent (join)
+
+Motivations included trust, guilt, conscience, or minimizing sentence length.
+
+b. Climate Change Policy
+
+Participants were asked whether to sign a climate treaty resembling the Kyoto Protocol.
+
+Results:
+
+36.3% chose not to sign
+
+Nearly two-thirds chose to sign despite the Nash Equilibrium favoring defection
+
+c. Drugs in Baseball
+
+A non-equilibrium scenario involving performance-enhancing drugs.
+
+Results:
+
+84.1% chose not to use drugs
+
+Decisions were largely driven by health concerns rather than rules or ethics
+
+IV. In-person Experiment Involving Silly Bandz
+
+Participants received cards labeled “Join” and “Defect” and payoff tables.
+
+Results (A > B > C > D):
+
+50% joined, 50% defected
+
+75% of defections were successful
+
+Average payout:
+
+Joiners: 2.6 Silly Bandz
+
+Defectors: 5.0 Silly Bandz
+
+Results (A > B > D > C):
+
+65% joined, 35% defected
+
+Successful defections were common
+
+Defectors again received higher average payouts
+
+V. Conclusion
+
+While mathematics favors defection, real people frequently choose cooperation. Trust, empathy, and moral reasoning often override pure optimization. Ironically, defectors consistently received disproportionate rewards.
+
+Across all scenarios:
+
+33.2% joined in all three cases
+
+Only 6.6% defected in all three
+
+Mathematically, defection dominates—but human behavior resists this conclusion.
+
+Bibliography
+
+(Full bibliography preserved verbatim from the document; omitted here for brevity but available on request.)
+
+If you want, I can also:
+
+Convert this into LaTeX
+
+Produce a clean OCR-style TXT
+
+Extract just the math section
+
+Summarize it for agentic / LLM strategy framing (very relevant to your recent work)

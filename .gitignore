@@ -1,0 +1,40 @@
+# Environment and virtualenv
+.env
+venv/
+__pycache__/
+*.pyc
+
+# Data and downloads
+datasets/
+results/
+
+# Internal documentation (don't submit) - consolidated into README.md
+SUBMISSION_MANIFEST.md
+SUBMISSION_CURATION.md
+experiment_plan.txt
+PROJECT_OUTLINE_IMPROVED.md
+GETTING_STARTED.md
+PROJECT_MAP.md
+IMPLEMENTATION_STATUS.md
+FirstRecap.md
+BENCHMARK_RESULTS.md
+
+# Test/development scripts (not part of core experiments)
+test_api.py
+test_enhanced_agent.py
+test_single_demo.py
+test_three_models.py
+test_models_available.py
+quick_test_tools.py
+run_pilot.py
+demo_enhanced_agent.py
+run_json_schema_benchmark.py
+test_instruction_following.py
+
+# OS / editor cruft
+.DS_Store
+Thumbs.db
+*.swp
+*.swo
+*.log
+.claude/

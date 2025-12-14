@@ -1,0 +1,147 @@
+================================================================================
+                    WHAT THE LLM ACTUALLY SEES
+================================================================================
+
+SYSTEM PROMPT:
+--------------------------------------------------------------------------------
+You are a helpful assistant that generates valid JSON.
+You MUST output ONLY a valid JSON object that strictly adheres to the provided schema.
+Do not include any text, explanation, or markdown formatting - only the raw JSON object.
+Do not add any fields not specified in the schema.
+
+USER MESSAGE:
+--------------------------------------------------------------------------------
+Generate a valid JSON object (task: calculate_area_88ee549f)
+Fields: 'dimensions' (object) [REQUIRED]; 'shape' (string) [REQUIRED]
+
+Required JSON Schema:
+{
+  "properties": {
+    "dimensions": {
+      "properties": {
+        "height": {
+          "description": "The height of the shape",
+          "type": "number"
+        },
+        "radius": {
+          "description": "The radius of the shape",
+          "type": "number"
+        },
+        "width": {
+          "description": "The width of the shape",
+          "type": "number"
+        }
+      },
+      "required": [
+        "width",
+        "height",
+        "radius"
+      ],
+      "type": "object"
+    },
+    "shape": {
+      "description": "The shape for which to calculate the area",
+      "type": "string"
+    }
+  },
+  "required": [
+    "shape",
+    "dimensions"
+  ],
+  "type": "object"
+}
+
+================================================================================
+                         EXPECTED MODEL OUTPUT
+================================================================================
+
+CORRECT (PASSES):
+{
+  "shape": "rectangle",
+  "dimensions": {
+    "width": 10.5,
+    "height": 20.0,
+    "radius": 5.0
+  }
+}
+
+Result: PASS
+- Valid JSON syntax
+- Has required fields
+- Correct types (string, numbers)
+- No extra fields
+
+================================================================================
+
+INCORRECT #1 - SYNTAX ERROR (FAILS):
+{
+  "shape": "rectangle",
+  "dimensions": {
+    "width": 10.5
+  }
+
+Result: FAIL - syntax_error
+Problem: Missing closing brace
+Impact: 2-8% of failures
+
+================================================================================
+
+INCORRECT #2 - SCHEMA VIOLATION (FAILS):
+{
+  "shape": "rectangle",
+  "dimensions": {
+    "width": "10.5",
+    "height": 20.0,
+    "radius": 5.0
+  }
+}
+
+Result: FAIL - schema_violation
+Problem: width is string "10.5" but schema requires number
+Impact: 0-16% of failures (GPT-3.5 worst at 16%)
+
+================================================================================
+
+INCORRECT #3 - HALLUCINATION (FAILS):
+{
+  "shape": "rectangle",
+  "dimensions": {
+    "width": 10.5,
+    "height": 20.0,
+    "radius": 5.0
+  },
+  "color": "blue",
+  "comment": "This is a nice shape"
+}
+
+Result: FAIL - hallucination
+Problem: Added 'color' and 'comment' fields not in schema
+Impact: 2-14% of failures (GPT-3.5 worst at 14%)
+
+================================================================================
+
+MODEL PERFORMANCE SUMMARY:
+
+Model                    Pass Rate    Common Failure Mode
+--------------------------------------------------------------------------------
+Gemini 2.5 Flash         88%          Balanced (2 of each type)
+GPT-3.5-turbo            62%          Hallucinations (7 instances)
+GPT-4o                   60%*         API errors (19/20 failures)
+
+*GPT-4o affected by OpenRouter credit exhaustion
+
+================================================================================
+                              KEY INSIGHT
+================================================================================
+
+Even the BEST model (Gemini 2.5 Flash) fails 12% of the time on constrained
+JSON generation. This means production agentic systems MUST have:
+
+1. Validation layer (jsonschema.validate before API calls)
+2. Retry logic (with corrective feedback)
+3. Fallback handlers (for persistent failures)
+
+Without these safeguards, your agent will have a 12-40% failure rate on
+critical API interactions.
+
+================================================================================

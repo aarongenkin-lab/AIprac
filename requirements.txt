@@ -1,0 +1,38 @@
+# Core dependencies for long-horizon reasoning experiments
+
+# LLM API clients
+openai>=1.0.0
+anthropic>=0.18.0
+requests>=2.31.0
+
+# Configuration and data handling
+pyyaml>=6.0
+python-dotenv>=1.0.0
+
+# Search and web tools (from CLAUDE.md)
+ddgs>=0.9.0
+
+# Data analysis and evaluation
+pandas>=2.0.0
+numpy>=1.24.0
+scipy>=1.11.0
+
+# Visualization
+matplotlib>=3.7.0
+seaborn>=0.12.0
+
+# NLP metrics
+nltk>=3.8.0
+rouge-score>=0.1.2
+
+# Utilities
+tqdm>=4.65.0
+jupyter>=1.0.0
+notebook>=7.0.0
+
+# Benchmarking (JSONSchemaBench)
+datasets>=2.14.0
+jsonschema>=4.19.0
+
+# Optional: Local LLM support
+# ollama  # Uncomment if using local models

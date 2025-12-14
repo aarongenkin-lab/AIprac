@@ -1,0 +1,121 @@
+[
+  {
+    "id": "math_001",
+    "type": "math",
+    "difficulty": "medium",
+    "requires_tools": true,
+    "prompt": "Calculate the compound interest on $10,000 invested at 4.5% annual rate, compounded monthly, over 7 years. Show your calculation step by step.",
+    "expected_answer": "14376.03",
+    "reasoning_steps": [
+      "Identify the compound interest formula: A = P(1 + r/n)^(nt)",
+      "P = 10000, r = 0.045, n = 12, t = 7",
+      "Calculate: A = 10000(1 + 0.045/12)^(12*7)",
+      "A = 10000(1.00375)^84",
+      "A ≈ 14376.03"
+    ],
+    "evaluation_criteria": {
+      "exact_match_tolerance": 0.01,
+      "must_show_formula": true,
+      "must_show_steps": true
+    }
+  },
+  {
+    "id": "logic_001",
+    "type": "logic",
+    "difficulty": "medium",
+    "requires_tools": false,
+    "prompt": "Given:\n- All employees in Building A have parking passes\n- Sarah works in Building A\n- Only people with parking passes can park in Lot C\n- Lot C is full on Tuesdays\n- Today is Tuesday\n\nQuestion: Can Sarah park in Lot C today? Explain your reasoning.",
+    "expected_answer": "No, Sarah cannot park in Lot C today because Lot C is full.",
+    "reasoning_steps": [
+      "Sarah works in Building A",
+      "Therefore, Sarah has a parking pass",
+      "Sarah can park in Lot C (she has the right)",
+      "However, Lot C is full on Tuesdays",
+      "Today is Tuesday",
+      "Therefore, Sarah cannot park there due to lack of space"
+    ],
+    "evaluation_criteria": {
+      "must_identify_full_lot": true,
+      "must_trace_logic_chain": true
+    }
+  },
+  {
+    "id": "code_001",
+    "type": "code",
+    "difficulty": "medium",
+    "requires_tools": true,
+    "prompt": "Write a Python function that takes a list of integers and returns the longest increasing subsequence. For example, given [10, 9, 2, 5, 3, 7, 101, 18], the function should return [2, 3, 7, 101] or [2, 5, 7, 101].",
+    "expected_answer": "def longest_increasing_subsequence(nums):\n    if not nums:\n        return []\n    \n    n = len(nums)\n    dp = [[nums[i]] for i in range(n)]\n    \n    for i in range(1, n):\n        for j in range(i):\n            if nums[i] > nums[j] and len(dp[j]) + 1 > len(dp[i]):\n                dp[i] = dp[j] + [nums[i]]\n    \n    return max(dp, key=len)",
+    "reasoning_steps": [
+      "Recognize this as a dynamic programming problem",
+      "Use dp array to store longest subsequence ending at each position",
+      "For each position, check all previous positions",
+      "Update if current element is larger and gives longer sequence",
+      "Return the longest sequence found"
+    ],
+    "evaluation_criteria": {
+      "must_handle_edge_cases": true,
+      "correct_algorithm": true,
+      "returns_valid_subsequence": true
+    }
+  },
+  {
+    "id": "qa_001",
+    "type": "qa",
+    "difficulty": "easy",
+    "requires_tools": false,
+    "context_tokens": 500,
+    "prompt": "Read the following passage and answer the question.\n\nPassage:\nThe Amazon rainforest, often referred to as the 'lungs of the Earth,' spans approximately 5.5 million square kilometers across nine countries in South America. Brazil contains about 60% of the rainforest, followed by Peru with 13% and Colombia with 10%. The Amazon is home to an estimated 390 billion individual trees divided into 16,000 species. It produces roughly 20% of the world's oxygen and plays a crucial role in regulating global climate patterns. However, deforestation rates have been alarming, with an estimated 17% of the forest lost in the last 50 years due to logging, agriculture, and development.\n\nQuestion: What percentage of the Amazon rainforest is located in Brazil, and what are the two main threats to the forest mentioned in the passage?",
+    "expected_answer": "60% of the Amazon rainforest is in Brazil. The two main threats mentioned are deforestation and agriculture/development.",
+    "reasoning_steps": [
+      "Locate information about Brazil's share: 60%",
+      "Identify threats mentioned: deforestation, logging, agriculture, development",
+      "Select the primary categories"
+    ],
+    "evaluation_criteria": {
+      "correct_percentage": true,
+      "identifies_threats": true
+    }
+  },
+  {
+    "id": "retrieval_001",
+    "type": "retrieval",
+    "difficulty": "hard",
+    "requires_tools": false,
+    "context_tokens": 8000,
+    "prompt": "This is a needle-in-haystack retrieval test.\n\n[CONTEXT START]\n{filler_text_1}\n\nImportant fact: The security code for the vault is 7-8-3-2-9.\n\n{filler_text_2}\n\nImportant fact: Dr. Martinez's favorite research subject is quantum entanglement in biological systems.\n\n{filler_text_3}\n\nImportant fact: The meeting was rescheduled to 3:47 PM on Thursday, March 14th.\n\n{filler_text_4}\n\n[CONTEXT END]\n\nQuestions:\n1. What is the security code for the vault?\n2. What is Dr. Martinez's favorite research subject?\n3. When was the meeting rescheduled to?",
+    "expected_answer": "1. 7-8-3-2-9\n2. Quantum entanglement in biological systems\n3. 3:47 PM on Thursday, March 14th",
+    "reasoning_steps": [
+      "Scan context for security code mention",
+      "Scan context for Dr. Martinez mention",
+      "Scan context for meeting time mention",
+      "Extract exact information"
+    ],
+    "evaluation_criteria": {
+      "all_facts_correct": true,
+      "exact_details": true
+    },
+    "note": "Filler text should be generated to reach desired context length"
+  },
+  {
+    "id": "multihop_001",
+    "type": "logic",
+    "difficulty": "hard",
+    "requires_tools": false,
+    "prompt": "Given the following facts:\n1. If it rains, the ground gets wet.\n2. If the ground is wet, worms come to the surface.\n3. If worms are on the surface, birds gather.\n4. If birds gather, cats come to hunt.\n5. It rained this morning.\n\nQuestion: Based on these facts, what can we conclude about cats? Trace your reasoning step by step.",
+    "expected_answer": "Cats will come to hunt. (Following the chain: rain → wet ground → worms surface → birds gather → cats hunt)",
+    "reasoning_steps": [
+      "Start with given: it rained",
+      "Apply rule 1: ground is wet",
+      "Apply rule 2: worms come to surface",
+      "Apply rule 3: birds gather",
+      "Apply rule 4: cats come to hunt",
+      "Conclusion: cats will come"
+    ],
+    "evaluation_criteria": {
+      "follows_logical_chain": true,
+      "shows_all_steps": true,
+      "correct_conclusion": true
+    }
+  }
+]

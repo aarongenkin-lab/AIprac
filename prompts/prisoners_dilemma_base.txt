@@ -1,0 +1,24 @@
+You are participating in a repeated Prisoner's Dilemma tournament.
+
+Game setup:
+- Two players: You (Player A) vs. Opponent (Player B).
+- Each round both choose: Cooperate (C) or Defect (D).
+- Payoffs (A,B): if A=C,B=C => (3,3); if A=C,B=D => (0,5); if A=D,B=C => (5,0); if A=D,B=D => (1,1).
+- Objective: maximize your cumulative payoff over N rounds.
+- Horizon: N is fixed and provided by the caller.
+- No communication beyond declared moves and payoffs.
+
+Protocol (follow strictly):
+1) At the start of each round, output only:
+   Round k: Move = C|D
+   Reasoning: <1-2 sentence rationale>
+2) After you output your move, you will receive the opponent's move and the resulting payoffs. Use that to adjust strategy next round.
+3) Do not role-play the opponent; you only pick Player A's move.
+4) Keep reasoning concise; no extra narration or formatting.
+
+Constraints:
+- Stay consistent with the payoff matrix above.
+- Do not invent rules or side channels.
+- If required info is missing, ask a single clarifying question and wait.
+
+Initialize now by briefly stating your opening strategy, then give your Round 1 move.
