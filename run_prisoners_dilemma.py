@@ -186,7 +186,10 @@ class LLMAgent:
         if AgenticReasoningFramework is None:
             raise RuntimeError("AgenticReasoningFramework not available; cannot run react mode here")
         agent = AgenticReasoningFramework(model_name=self.model_id, max_steps=6, temperature=self.temperature, verbose=False)
-        prompt = self._build_prompt(round_num, horizon, history)
+        prompt = (
+            self._build_prompt(round_num, horizon, history)
+            + "\n\nFinal answer format: respond with exactly one line 'Move = C' or 'Move = D' as your answer action."
+        )
         result = agent.reason(prompt)
         move = extract_move_from_text(result.final_answer or "")
         return move, result.final_answer or ""

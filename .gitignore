@@ -35,6 +35,19 @@ test_instruction_following.py
 benchmarks/wtq_mini/
 benchmarks/run_wtq_mini.py
 
+# Unused benchmark scripts and data (keeping zebra files - used in experiments)
+benchmarks/ifeval_bench.py
+benchmarks/needle_in_haystack.py
+benchmarks/HOW_IT_WORKS.md
+benchmarks/PROMPT_EXAMPLE.txt
+benchmarks/README_JSON_SCHEMA_BENCH.md
+benchmarks/longbend_subset/
+benchmarks/retention_tests/
+benchmarks/tool_use_tasks/
+
+# Docs folder - internal notes only
+docs/
+
 # OS / editor cruft
 .DS_Store
 Thumbs.db
