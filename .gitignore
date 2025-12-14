@@ -31,6 +31,10 @@ demo_enhanced_agent.py
 run_json_schema_benchmark.py
 test_instruction_following.py
 
+# WTQ (WikiTableQuestions) - not part of core experiments
+benchmarks/wtq_mini/
+benchmarks/run_wtq_mini.py
+
 # OS / editor cruft
 .DS_Store
 Thumbs.db
